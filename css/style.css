@@ -1,0 +1,83 @@
+/* *********************** TOGGLE SWITCH *********************** */
+:root {
+   /* ************ Colors ************* */
+    --line-color: #4F5164;
+    --active-color: #F9DEC9;
+    --inactive-color: #F78CA2;
+    --body-color: #121217;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    place-items : center;
+    background-color: var(--body-color);
+}
+
+.toggle__content {
+    display: grid;
+    row-gap: 3rem;
+}
+
+.toggle__label {
+    cursor: pointer;
+    padding-block: 0.5rem;
+}
+
+.toggle__check {
+    display: none;
+}
+
+.toggle__rail {
+    position: relative;
+    width: 52px;
+    height: 4px;
+    background-color: var(--line-color);
+    border-radius: 2rem ;
+}
+
+.toggle__circle {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: var(--body-color);
+    box-shadow: inset 0 0 0 4px var(--inactive-color);
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    transition: transform .4s , box-shadow .4s;
+    z-index: 2;
+}
+
+.toggle__border {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background-color: var(--body-color);
+    border-radius: 50%;
+    left: -4px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    transition: transform .4s ;
+}
+
+/* Toggle animation effects */
+
+.toggle__check:checked ~ .toggle__rail .toggle__circle {
+    transform: translateX(28px);
+    box-shadow: inset 0 0 0 12px var(--active-color);
+}
+
+.toggle__check:checked ~ .toggle__rail .toggle__border {
+    transform: translateX(28px);
+}
